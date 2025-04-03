@@ -1,6 +1,9 @@
 # nginx_tester
 
-## Tests
+## Valid requests
+
+`GET`
+---
 
 **index.html**
 
@@ -10,10 +13,17 @@ Host: localhost
 Connection: close
 ```
 
-**index.html**
+**ava.jpg**
 
 ```
 GET /img/ava.jpg HTTP/1.1
 Host: localhost
 Connection: close
 ```
+
+`POST`
+---
+
+
+`DELETE`
+---
