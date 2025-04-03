@@ -13,6 +13,14 @@ Host: localhost
 Connection: close
 ```
 
+**index.html: host instead of Host**
+
+```
+GET /index.html HTTP/1.1
+host: localhost
+Connection: close
+```
+
 **ava.jpg**
 
 ```
@@ -30,7 +38,7 @@ Connection: close
 
 ## Invalid / Bad requests
 
-`Other`
+`Miscellanous`
 ---
 
 **no request line**
@@ -84,3 +92,91 @@ Connection: close
 
 *Response*
 Nginx delivers the html file without header, only the body is sent. As soon as it read `Host` header line it seems.
+
+
+**custom.css: no HTTP version**
+
+```
+GET /css/custom.css
+Host: localhost
+Connection: close
+```
+
+*Response*
+Nginx delivers the html file without header, only the body is sent. As soon as it read `Host` header line it seems.
+
+**index.html: no Host header field**
+
+```
+GET /index.html HTTP/1.1
+```
+
+or
+
+```
+GET /index.html HTTP/1.1
+Connection: close
+```
+
+*Response*
+
+```
+HTTP/1.1 400 Bad Request
+Server: nginx/1.18.0
+Date: Thu, 03 Apr 2025 07:20:45 GMT
+Content-Type: text/html
+Content-Length: 157
+Connection: close
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>
+```
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+
+**index.html: typo on HTTP**
+
+```
+GET /index.html HTPP/1.1
+Host: localhost
+Connection: close
+```
+
+*Response*
+
+```
+HTTP/1.1 400 Bad Request
+Server: nginx/1.18.0
+Date: Thu, 03 Apr 2025 07:28:37 GMT
+Content-Type: text/html
+Content-Length: 157
+Connection: close
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>
+```
+
+Nginx respond `400: Bad Request` and send an html file with describing the error. **It seems to be as soon as it detects the parsing error**.
+
+
+**index.html: http instead of HTTP**
+
+```
+GET /index.html http/1.1 
+```
+
+*Response*
+
+Nginx delivers the html file without header, only the body is sent. **It seems it doesn't want to deal with further demand from the client, the connection is closed right after processing the request line**.
+
