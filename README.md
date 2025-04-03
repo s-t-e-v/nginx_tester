@@ -100,6 +100,35 @@ Host: 0.0.0.0
 Connection: close
 ```
 
+**Multiple request line**
+
+```
+GET / HTTP/1.1
+GET / HTTP/1.1
+Host: localhost
+Connection: close
+```
+
+or
+
+```
+GET / HTTP/1.1
+GET /img/ava.jpg HTTP/1.1
+Host: localhost
+Connection: close
+```
+
+or 
+
+(To recheck)
+```
+GET /img/ava.jpg HTTP/1.1
+GET / HTTP/1.1
+Host: localhost
+Connection: close
+```
+
+
 
 **ava.jpg**
 
