@@ -67,6 +67,14 @@ Host: localhost google.com
 Connection: close
 ```
 
+**/dontexist.html (when the config allows it)**
+
+```
+GET /dontexist.html HTTP/1.1
+Host: localhost
+Connection: close
+```
+
 
 **ava.jpg**
 
@@ -296,4 +304,93 @@ Connection: close
 ```
 
 Nginx respond `505: HTTP Version Not Supported` and send a html file describing the error.
+
+**index.html: only HTTP**
+
+```
+GET /index.html HTTP
+```
+
+or
+
+```
+GET / HTTP/
+```
+
+*Response*
+
+```
+HTTP/1.1 400 Bad Request
+Server: nginx/1.18.0
+Date: Thu, 03 Apr 2025 09:42:35 GMT
+Content-Type: text/html
+Content-Length: 157
+Connection: close
+```
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+
+**index.html: /1.1 only**
+
+```
+GET / /1.1
+```
+
+*Response*
+
+Nginx delivers the html file without header, only the body is sent. **It seems it doesn't want to deal with further demand from the client, the connection is closed right after processing the request line**.
+
+**URI = ??? (no /)**
+
+```
+GET ??? HTTP/1.1
+```
+
+or
+
+```
+GET saluttoi HTTP/1.1
+```
+
+*Response*
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+**URI = random_name.html (there is no /)**
+
+```
+GET pleure.html HTTP/1.1
+```
+
+*Response*
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+**URI = /dontexist.html (nginx configured to throw 404)**
+
+```
+GET /dontexist.html HTTP/1.1
+Host: localhost
+Connection: close
+```
+
+*Response*
+
+```
+HTTP/1.1 404 Not Found
+Server: nginx/1.18.0
+Date: Thu, 03 Apr 2025 10:18:26 GMT
+Content-Type: text/html
+Content-Length: 153
+Connection: close
+
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>
+```
+
+Nginx respond with the famous `404: Not Found` and send an html file describing the error.
 
