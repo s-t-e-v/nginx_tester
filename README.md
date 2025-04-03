@@ -21,6 +21,32 @@ host: localhost
 Connection: close
 ```
 
+**index.html: host with a random name**
+
+```
+GET /index.html HTTP/1.1
+Host: nimp
+Connection: close
+```
+
+**index.html: no space for a the Host field**
+
+```
+GET /index.html HTTP/1.1
+Host:localhost
+Connection: close
+```
+
+
+**index.html: multiple hosts**
+
+```
+GET /index.html HTTP/1.1 
+Host: localhost google.com
+Connection: close
+```
+
+
 **ava.jpg**
 
 ```
@@ -179,4 +205,47 @@ GET /index.html http/1.1
 *Response*
 
 Nginx delivers the html file without header, only the body is sent. **It seems it doesn't want to deal with further demand from the client, the connection is closed right after processing the request line**.
+
+**index.html: Host field empty**
+
+```
+GET /index.html HTTP/1.1
+Host:
+```
+
+or
+
+```
+GET /index.html HTTP/1.1
+Host:<multiple spaces>
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file with describing the error. **It seems to be as soon as it detects the parsing error**.
+
+**index.html: field with spaces before colons ':'**
+
+```
+GET /index.html HTTP/1.1
+Host      : localhost
+Connection: close
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+**index.html: Connection close with space before ':'**
+
+```
+GET /index.html HTTP/1.1
+Host: localhost
+Connection      : close
+```
+
+*Response*
+
+Nginx respond `200: OK` but does not close the connection, as if the field `Connection` was ignored due to parsing error.
+
 
