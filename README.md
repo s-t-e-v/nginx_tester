@@ -1,5 +1,26 @@
 # nginx_tester
 
+## How to mannualy test
+
+```bash
+telnet 127.0.0.1 8090
+```
+
+## Testers to implement
+
+- [ ] Parser tester
+  - test grammar
+  - test methods GET/POST/DELETE
+- [ ] Resilience tester
+  - test resilience to many request, good or bad
+- [ ] Config tester
+  - test different configs
+  - each configs is tested with parser, resilience tester
+  - specific test for each config to see if it reacts correctly
+- [ ] [OPTIONAL] Response tester (test if responses are valid)
+- [ ] [OPTIONAL] CGI tester
+- [ ] [BONUS] Cookies & session management tester
+
 ## Valid requests
 
 `GET`
@@ -248,4 +269,31 @@ Connection      : close
 
 Nginx respond `200: OK` but does not close the connection, as if the field `Connection` was ignored due to parsing error.
 
+
+**index.html: HTTP version not handled**
+
+```
+GET / HTTP/6.1
+```
+
+*Response*
+
+```
+HTTP/1.1 505 HTTP Version Not Supported
+Server: nginx/1.18.0
+Date: Thu, 03 Apr 2025 09:38:33 GMT
+Content-Type: text/html
+Content-Length: 187
+Connection: close
+
+<html>
+<head><title>505 HTTP Version Not Supported</title></head>
+<body>
+<center><h1>505 HTTP Version Not Supported</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>
+```
+
+Nginx respond `505: HTTP Version Not Supported` and send a html file describing the error.
 
