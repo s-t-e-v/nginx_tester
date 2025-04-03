@@ -120,7 +120,6 @@ Connection: close
 
 or 
 
-(To recheck)
 ```
 GET /img/ava.jpg HTTP/1.1
 GET / HTTP/1.1
@@ -128,7 +127,7 @@ Host: localhost
 Connection: close
 ```
 
-
+The first resources is taken into account, the other is ignored
 
 **ava.jpg**
 
