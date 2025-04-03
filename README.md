@@ -75,6 +75,31 @@ Host: localhost
 Connection: close
 ```
 
+**index.html: unkwown header field**
+
+```
+GET /index.html HTTP/1.1
+Host: localhost
+nimporte: nimporte
+Connection: close
+```
+
+**index.html: host with ip address**
+
+```
+GET / HTTP/1.1
+Host: 127.0.0.1
+Connection: close
+```
+
+or
+
+```
+GET / HTTP/1.1
+Host: 0.0.0.0
+Connection: close
+```
+
 
 **ava.jpg**
 
@@ -121,6 +146,85 @@ Connection: close
 </html>
 ```
 Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+**request with URI + HTTP version only**
+
+```
+/index.html HTTP/1.1
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+**unknown method looking like GET**
+
+```
+nimportequoi /index.html HTTP/1.1
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file describing the error.
+
+**unknown method only**
+
+```
+obtenir
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file describing the error.
+
+**URI only**
+
+```
+/index.html
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file describing the error.
+
+**HTTP version only**
+
+```
+HTTP /1.1
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file describing the error.
+
+
+**unkown method on caps**
+
+```
+OBTENIR /index.html HTTP/1.1
+```
+
+*Response*
+
+```
+HTTP/1.1 405 Not Allowed
+Server: nginx/1.18.0
+Date: Thu, 03 Apr 2025 10:49:59 GMT
+Content-Type: text/html
+Content-Length: 157
+Connection: close
+
+<html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>
+```
+
+
+Nginx respond `405: Not Allowed` and send an html file describing the error.
 
 
 `GET`
@@ -393,4 +497,63 @@ Connection: close
 ```
 
 Nginx respond with the famous `404: Not Found` and send an html file describing the error.
+
+**index.html: additional token at the end of request line**
+
+```
+GET / HTTP/1.1 yohou 
+```
+
+*Response*
+
+```
+HTTP/1.1 400 Bad Request
+Server: nginx/1.18.0
+Date: Thu, 03 Apr 2025 10:24:13 GMT
+Content-Type: text/html
+Content-Length: 157
+Connection: close
+
+<html>
+<head><title>400 Bad Request</title></head>
+<body>
+<center><h1>400 Bad Request</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>
+```
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+**index.html: get instead of GET**
+
+```
+get /index.html HTTP/1.1
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+
+**index.html: GeT instead of GET**
+
+```
+GeT /index.html HTTP/1.1
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+
+**index.html: HTtP instead of HTTP**
+
+```
+GET /index.html HTtP/1.1
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
 
