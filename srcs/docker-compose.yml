@@ -1,29 +1,22 @@
 services:
-  static_website:
+  nginx:
     build:
-      context: static_website
+      context: nginx 
       dockerfile: Dockerfile
-      args:
-        - STATIC_WEBSITE_FQDN=${STATIC_WEBSITE_FQDN}
-        - STATIC_WEBSITE_ROOT=${STATIC_WEBSITE_ROOT}
     ports:
       - "8090:80"
-    init: true
     volumes:
-      - static_website_files:${STATIC_WEBSITE_ROOT}
-    env_file: .env
-    healthcheck:
-      test: service nginx status || exit 1
-      interval: 10s
-      timeout: 5s
-      retries: 3
-    restart: always
+      - website:/var/www/html
 
+  php:
+    image: php:7.4-fpm
+    volumes:
+      - website:/var/www/html
 
 volumes:
-  static_website_files:
+  website:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: ${DATA_DIR}/static_website
+      device: ${DATA_DIR}/website

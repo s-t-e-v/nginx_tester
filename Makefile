@@ -8,7 +8,7 @@ up: prepare
 	docker compose -f $(COMPOSE_FILE) up ${OPTS} --build $(ARGS)
 
 prepare:
-	@mkdir -p $(DATA_DIR)/static_website
+	@mkdir -p $(DATA_DIR)/website
 
 stop:
 	docker compose -f $(COMPOSE_FILE) stop

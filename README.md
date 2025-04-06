@@ -140,6 +140,17 @@ Connection: close
 `POST`
 ---
 
+```
+POST /index.php HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+
+foo=bar&baz=1
+```
+
+This requires nginx configure with php cgi and an index.php to work
+
 
 `DELETE`
 ---
