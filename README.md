@@ -596,3 +596,83 @@ GET /index.html HTtP/1.1
 
 Nginx respond `400: Bad Request` and send an html file with describing the error.
 
+POST
+---
+
+**No double CRLF between last header field and mesage body**
+
+```
+POST /index.php HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+foo=bar&baz=1
+```
+
+*Response*
+
+No response
+
+**POST without HTTP version**
+
+```
+POST /index.php
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+
+foo=bar&baz=1
+```
+
+*Response*
+
+Nginx respond `400: Bad Request` and send an html file with describing the error.
+
+**POST on index.html**
+
+
+```
+POST /index.html HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+
+foo=bar&baz=1
+```
+
+*Response*
+
+```
+HTTP/1.1 405 Not Allowed
+Server: nginx/1.27.4
+Date: Sun, 06 Apr 2025 13:13:07 GMT
+Content-Type: text/html
+Content-Length: 157
+Connection: keep-alive
+
+<html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.27.4</center>
+</body>
+</html>
+```
+
+
+Nginx respond `405: Not Allowed` and send an html file with describing the error.
+
+**POST with an non existing URI**
+
+```
+POST /dontexist HTTP/1.1
+Host: localhost
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+
+foo=bar&baz=1
+```
+
+*Response*
+
+Nginx respond `404: Not Found` and send an html file with describing the error.
