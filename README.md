@@ -140,6 +140,8 @@ Connection: close
 `POST`
 ---
 
+**Simple request**
+
 ```
 POST /index.php HTTP/1.1
 Host: localhost
@@ -150,6 +152,17 @@ foo=bar&baz=1
 ```
 
 This requires nginx configure with php cgi and an index.php to work
+
+**Create a file**
+
+```
+POST /new.php?filename=lol HTTP/1.1
+Host: localhost
+Content-Type: text/plain
+Content-Length: 11
+
+hello world
+```
 
 
 `DELETE`
@@ -676,3 +689,8 @@ foo=bar&baz=1
 *Response*
 
 Nginx respond `404: Not Found` and send an html file with describing the error.
+
+
+DELETE
+---
+
