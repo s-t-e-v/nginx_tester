@@ -186,6 +186,13 @@ File 'lol' created with POST body.
 `DELETE`
 ---
 
+**Delete a created file**
+
+```
+DELETE /del.php?filename=lol HTTP/1.1
+Host: localhost:8090
+```
+
 ## Invalid / Bad requests
 
 `Miscellanous`
@@ -711,4 +718,30 @@ Nginx respond `404: Not Found` and send an html file with describing the error.
 
 DELETE
 ---
+
+**DELETE a file without more configuration**
+
+```
+DELETE /lol HTTP/1.1
+Host: localhost
+```
+
+*Response*
+
+```
+HTTP/1.1 405 Not Allowed
+Server: nginx/1.27.4
+Date: Mon, 07 Apr 2025 09:05:14 GMT
+Content-Type: text/html
+Content-Length: 157
+Connection: close
+
+<html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.27.4</center>
+</body>
+</html>
+```
 
