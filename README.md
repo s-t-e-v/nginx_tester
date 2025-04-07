@@ -164,6 +164,24 @@ Content-Length: 11
 hello world
 ```
 
+*Response*
+
+```
+HTTP/1.1 201 Created
+Server: nginx/1.27.4
+Date: Mon, 07 Apr 2025 08:46:08 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/7.4.33
+
+23
+File 'lol' created with POST body.
+
+0
+
+```
+
 
 `DELETE`
 ---

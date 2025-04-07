@@ -1,13 +1,22 @@
 FROM nginx:alpine
 
-# Copy the nginx configuration file
+ARG USERNAME=webuser
+ARG UID
+ARG GID
+
+# Create user matching host UID (same as PHP container)
+RUN addgroup -g $GID $USERNAME && \
+    adduser -D -u $UID -G $USERNAME $USERNAME
+
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-
-# Copy the HTML files
 COPY www /var/www/html
+    
+# Set ownership of web root (won't matter with bind mount, but good default)
+RUN chown -R $USERNAME:$USERNAME /var/www/html
 
-# Expose port 80
+# Run Nginx as the new user
+RUN sed -i "s/user nginx;/user $USERNAME;/" /etc/nginx/nginx.conf
+
 EXPOSE 80
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]

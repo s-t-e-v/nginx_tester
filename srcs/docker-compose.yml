@@ -1,15 +1,24 @@
+
 services:
   nginx:
+    container_name: nginx
     build:
-      context: nginx 
-      dockerfile: Dockerfile
+      context: nginx
+      args:
+        UID: ${UID}
+        GID: ${GID}
     ports:
       - "8090:80"
     volumes:
       - website:/var/www/html
 
   php:
-    image: php:7.4-fpm
+    container_name: php
+    build:
+      context: php
+      args:
+        UID: ${UID}
+        GID: ${GID}
     volumes:
       - website:/var/www/html
 
@@ -17,6 +26,6 @@ volumes:
   website:
     driver: local
     driver_opts:
-      type: 'none'
-      o: 'bind'
+      type: none
+      o: bind
       device: ${DATA_DIR}/website
