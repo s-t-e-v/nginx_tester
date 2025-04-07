@@ -745,3 +745,18 @@ Connection: close
 </html>
 ```
 
+**GET with a body**
+
+```
+GET /index.html HTTP/1.1
+Host: localhost:8090
+Connection: close
+Content-Type: text/plain
+Content-Length: 11
+
+hello world
+```
+
+*Response*
+
+nginx return `200: OK` and ignore the body
