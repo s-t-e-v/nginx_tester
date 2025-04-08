@@ -1,214 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Steven Bandaogo - Web Developer</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Steven Bandaogo's resume">
-    <meta name="author" content="Steven Bandaogo">
-    <link rel="stylesheet" href="css/kube.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/custom.min.css" />
-    <link rel="shortcut icon" href="img/favicon.png" />
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC:700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-	<style>
-		.intro h1:before {
-			/* Edit this with your name or anything else */
-			content: 'STEVEN';
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webserver</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	<!-- Navigation -->
-    <div class="main-nav">
-        <div class="container">
-            <header class="group top-nav">
-                <div class="navigation-toggle" data-tools="navigation-toggle" data-target="#navbar-1">
-                    <span class="logo">STEVEN</span>
-                </div>
-                <nav id="navbar-1" class="navbar item-nav">
-                    <ul>
-                        <li class="active"><a href="#about">About</a></li>
-                        <li><a href="#experiences">Experience</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
+    <div class="container">
+        <h1>Welcome to the Webserver</h1>
+        <p>This is a simple web server running on port 8070.</p>
+
+        <p>Here is a picture of a cute cat:</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/1024px-Cat_November_2010-1a.jpg" alt="Cute Cat" />
+
+        <p>Here is another picture of a cute cat, but this time it is proudly hosted on our server 😎:</p>
+        <!-- <img src="img/cat.jpg" alt="Cute Cat" /> -->
+
+        <p>How about birbs? Here is a picture of a cute birb:</p>
+        <img src="https://live.staticflickr.com/65535/45505097264_e3744dfb8c_n.jpg" alt="parrot-billed seedeater" />
+
+        <p>Another one:</p>
+        <!-- <img src="img/birb.jpg" alt="Cute Birb" /> -->
     </div>
-
-	<!-- Introduction -->
-    <div class="intro section" id="about">
-        <div class="container">
-            <p>Hi, I’m Steven</p>
-            <div class="units-row units-split wrap">
-                <div class="unit-20">
-                    <img src="img/ava.jpg" alt="Steven Bandaogo">
-                </div>
-				<div class="unit-80">
-					<h1>I will do<br><span id="typed"></span></h1>
-				</div>
-				<p>
-					I am a passionate web developer open to freelance opportunities in web development or design. Whether you need a sleek frontend interface or a robust backend solution, I'm ready to bring your ideas to life. Looking forward to collaborating on exciting projects or joining a dynamic team! 🚀
-				</p>
-            </div>
-        </div>
-    </div>
-
-	<!-- Work Experience -->
-    <div class="work section second" id="experiences">
-        <div class="container">
-            <h1>Work <br>Experience</h1>
-			<ul class="work-list">
-				<li>April - May 2023</li>
-				<li><a href="">Bandaogo Dev, France</a></li>
-				<li>Internship - Frontend development with React/TypeScript for a cultural center</li>
-			</ul>
-            <ul class="work-list">
-                <li>June - December 2022</li>
-                <li><a href="#">SNCF Voyageur, Paris, France</a></li>
-                <li>Station Agent & Sales Representative</li>
-            </ul>
-            <ul class="work-list">
-                <li>09/2021 - 06/2022</li>
-                <li><a href="">SAM Event, Paris, France</a></li>
-                <li>Flow Regulation Agent at Train Stations</li>
-            </ul>
-            <ul class="work-list">
-                <li>03/2020 - 06/2021</li>
-                <li><a href="">Acadomia, Paris, France</a></li>
-                <li>Math/Physics Tutor</li>
-            </ul>
-        </div>
-    </div>
-
-	<!-- Education -->
-	 <div class="work section second" id="education">
-		<div class="container">
-			<h1>Education</h1>
-			<ul class="work-list">
-				<li>Since November 2023</li>
-				<li><a href="">42 Paris</a></li>
-				<li>Architect in Digital Technology</li>
-			</ul>
-			<ul class="work-list">
-				<li>01/2023 - 06/2023</li>
-				<li><a href="">Doranco, Bagnolet, France</a></li>
-				<li>Web Developer</li>
-			</ul>
-			<ul class="work-list">
-				<li>09/2019 - 06/2021</li>
-				<li><a href="">Sorbonne University, Paris, France</a></li>
-				<li>Master 1 Level in Fundamental Physics & Applications</li>
-			</ul>
-		</div>
-    </div>
-
-	 <div class="award section second" id="projects">
-		<div class="container">
-			<h1>Projects</h1>
-			<ul class="award-list list-flat">
-				<li><a href="https://github.com/s-t-e-v/energy_management_system_front">Energy Management System</a></li>
-				<li>Ongoing - Personal project</li>
-				<li>Frontend of an energy management web app with Next.js / Ts.</li>
-			</ul>
-			<ul class="award-list list-flat">
-				<li><a href="https://github.com/s-t-e-v/todolist2">To-Do List App</a></li>
-				<li>Ongoing - Personal project</li>
-				<li>Simple To-Do List app with Python, Django, Js</li>
-			</ul>
-			<ul class="award-list list-flat">
-				<li><a href="https://s-t-e-v.github.io/Product-preview-card-component/">E-commerce Product Page</a></li>
-				<li>August 2022 - Challenge</li>
-				<li>Creation of a responsive product page with HTML / CSS</li>
-			</ul>
-		</div>
-	</div>
-
-	<!-- Technical Skills -->
-    <div class="skills section second" id="skills">
-        <div class="container">
-            <h1>Technical <br> Skills</h1>
-            <ul class="skill-set list-flat">
-                <li>Frontend</li>
-				<li>Design responsive web pages</li>
-				<li>Design and optimize user experience</li>
-				<li>
-					<img src="https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5">
-					<img src="https://img.shields.io/badge/-CSS-05122A?style=flat&logo=CSS3&logoColor=1572B6">
-					<img src="https://img.shields.io/badge/-Bootstrap-05122A?style=flat&logo=bootstrap">
-					<img src="https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript">
-					<img src="https://img.shields.io/badge/-TypeScript-05122A?style=flat&logo=typescript">
-					<img src="https://img.shields.io/badge/-React-05122A?style=flat&logo=react">
-				</li>
-			</ul>
-            <ul class="skill-set list-flat">
-				<li>Backend</li>
-				<li>Create and manage dynamic websites</li>
-				<li>Create and manage databases</li>
-				<li>
-					<img src="https://img.shields.io/badge/-PHP-05122A?style=flat&logo=php">
-					<img src="https://img.shields.io/badge/-Python-05122A?style=flat&logo=python">
-					<img src="https://img.shields.io/badge/-Django-05122A?style=flat&logo=django">
-					<img src="https://img.shields.io/badge/-MySQL-05122A?style=flat&logo=mysql">
-				</li>
-            </ul>
-			  <ul class="skill-list list-flat">
-                <li>CMS</li>
-                <li>
-                    <img src="https://img.shields.io/badge/-WordPress-05122A?style=flat&logo=wordpress" alt="WordPress">
-                </li>
-            </ul>
-            <ul class="skill-list list-flat">
-                <li>Design</li>
-                <li>
-					<img src="https://img.shields.io/badge/Adobe%20XD-470137?style=flat&logo=Adobe%20XD&logoColor=#FF61F6" alt="Adobe XD">
-					<img src="https://img.shields.io/badge/-Figma-05122A?style=flat&logo=figma" alt="Figma">
-					<img src="https://img.shields.io/badge/Adobe%20Photoshop-%2331A8FF.svg?style=flat&logo=adobe%20photoshop&logoColor=white" alt="Adobe Photoshop">
-					<img src="https://img.shields.io/badge/Adobe%20Illustrator-%23FF9A00.svg?style=flat&logo=adobe%20illustrator&logoColor=white" alt="Adobe Illustrator">
-                </li>
-            </ul>
-        </div>
-    </div>
-
-	<!-- Quote -->
-	<div class="quote">
-		<div class="container text-centered">
-			<h1>fight against the ugliness.</h1>
-		</div>
-	</div>
-
-    <footer>
-        <div class="container">
-            <div class="units-row">
-                <div class="unit-50">
-                    <p>© Steven Bandaogo | Web Developer</p>
-                </div>
-                <div class="unit-50">
-                    <ul class="social list-flat right">
-                        <li><a href="mailto:steven.bandaogo@proton.me"><i class="fa fa-send"></i></a></li>
-                        <li><a href="https://github.com/s-t-e-v"><i class="fa fa-github"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/steven-bandaogo-88532811b/"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Javascript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/typed.min.js"></script>
-    <script src="js/kube.min.js"></script>
-    <script src="js/site.js"></script>
-    <script>
-        function newTyped(){}$(function(){$("#typed").typed({
-		// Change to edit type effect
-        strings: ["your website", "your design", "wonders"],
-        typeSpeed:90, backDelay:700, contentType:"html", loop:!0, resetCallback:function(){newTyped()}}),
-        $(".reset").click(function(){$("#typed").typed("reset")})});
-    </script>
 </body>
 </html>
