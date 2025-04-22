@@ -16,6 +16,8 @@ stop:
 down:
 	docker compose -f $(COMPOSE_FILE) down
 
+re: down all
+
 del:
 	docker stop $$(docker ps -aq) 2>/dev/null || true
 	docker rm $$(docker ps -aq) 2>/dev/null || true
